@@ -1,0 +1,64 @@
+
+{% extends 'base.html' %}
+{% block menu %}
+    {% load static %}    
+    <ul>
+        <li>
+            <img width="30px" height="30px" src="{% static 'Picture1.png' %}" alt="">
+            <h2>Menu</h2>
+
+        </li>
+
+        <li>
+            <img width="25px" height="25px" src="{% static 'home.png' %}" alt="">
+            <a href="/home/">Home</a>
+        </li>
+        <br>
+        <li>
+            <img width="25px" height="25px" src="{% static 'perfil.png' %}" alt="">
+            <a href="/perfil/">Mi Perfil</a>
+        </li>
+        <li>
+            <img width="20px" height="20px" src="{% static 'clientes.png' %}" alt="">
+            <a href="/clientes/">Clientes</a>
+        </li>
+        <li>
+            <img width="20px" height="20px" src="{% static 'trabajador.png' %}" alt="">
+            <a href="/empleados/">Empleados</a>
+        </li>
+        <li>
+            <img width="20px" height="20px" src="{% static 'proveedores.png' %}" alt="">
+            <a href="/proveedores/">Ver Proveedores</a>
+        </li>
+        <li>
+            <img width="20px" height="20px" src="{% static 'pedidos.png' %}" alt="">
+            <a href="/pedidos/">Ver Pedidos</a>
+        </li>
+        <li>
+            <img width="20px" height="20px" src="{% static 'ventas.png' %}" alt="">
+            <a href="/ventas/">Ventas</a>
+        </li>
+        <br>
+        <li>
+            <img width="20px" height="20px" src="{% static 'nuevo_empleado.png' %}" alt="">
+            <a href="/empleado/add/">Nuevo Empleado</a>
+        </li>
+        <li>
+            <img width="20px" height="20px" src="{% static 'crear_producto.png' %}" alt="">
+            <a href="/crear/">Crear Productos</a>
+        </li>
+        <li>
+            <img width="20px" height="20px" src="{% static 'agegar_proveedor.png' %}" alt="">
+            <a href="/proveedores/crear/">Add Proveedores</a>
+        </li>
+        <li>
+            <img width="20px" height="20px" src="{% static 'poblar productos.png' %}" alt="">
+            <a href="/extras/">Opciones Extras</a>
+        </li>
+        <br>
+        <li>
+            <img width="20px" height="20px" src="{% static 'cerrar_sesion.png' %}" alt="">
+            <a href="/logout/">Cerrar Sesion</a>
+        </li>
+    </ul>
+{% endblock %}

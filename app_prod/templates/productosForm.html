@@ -1,0 +1,70 @@
+{% extends 'NavMenuEmpleado.html' %}
+
+{% block content %}
+    <h1>Nuevo Producto</h1>
+    <form action="/crear/" method="post" class="form-productos">
+        {% csrf_token %}
+        <div>
+            {{ form.nombre.label_tag }}
+            {{ form.nombre }}
+        </div>
+        <div class="input-text">
+            {{ form.descripcion.label_tag }}
+            {{ form.descripcion }}
+        </div>
+        <div>
+            {{ form.cant_stock.label_tag }}
+            {{ form.cant_stock }}
+        </div>
+        <div>
+            {{ form.precio.label_tag }}
+            {{ form.precio }}
+        </div>
+        <div>
+            {{ form.imagen.label_tag }}
+            {{ form.imagen }}
+        </div>
+        <div>
+            {{ form.id_proveedor.label_tag }}
+            {{ form.id_proveedor }}
+        </div>
+        <div>
+            {{ form.categoria.label_tag }}
+            {{ form.categoria }}
+        </div>
+        <div id="pantalla">
+            {{ form.tamanio_pantalla.label_tag }}
+            {{ form.tamanio_pantalla }}
+        </div>
+        <div id="espacio">
+            {{ form.espacio.label_tag }}
+            {{ form.espacio }}
+        </div>
+        <div id="memoria">
+            {{ form.memoria_ram.label_tag }}
+            {{ form.memoria_ram }}
+        </div>
+        <div id="consumo">
+            {{ form.consumo.label_tag }}
+            {{ form.consumo }}
+        </div>
+        <input type="submit" value="Guardar" class="submit">
+    </form>
+    <div class="container-msgs">
+        {% if error %}
+            <span class="error">{{error}}</span>
+
+        {% else %}
+            <span class="msg">{{msg}}</span>
+
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+
+
+{% block scripts %}
+{% load static %}
+<script src="{% static 'js/formProductos.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,103 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+ 
+.container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #dddddd;
+}
+
+
+.formulario{
+    position: relative;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #bbbbbb;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px 0 #aaaaaa;
+    padding: 40px 20px;
+    background-color: #ffffff;
+}
+
+.msgs{
+    margin-top: 5px;
+    color: yellow;
+}
+
+form{
+    position: relative;
+    display: flex;
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form .container-inputs{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 20px;
+}
+
+form div label{
+    font-size: 15px;
+}
+
+form .container-inputs{
+    width: 40%;
+}
+
+form .container-inputs input{
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: white;
+    outline: none;
+    width: 100%;
+    padding: 4px;
+}
+
+#submit{
+    padding: 5px;
+}
+
+.container-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-buttons input, a{
+    text-decoration: none;
+    border: 1px solid gray;
+    padding: 4px;
+    margin-left: 5px;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.container-buttons input:hover, a:hover{
+    background-color: #dddddd;
+}
+
+
+
+@media screen and (max-width:768px) {
+    .formulario{
+        width: 90%;
+    }
+  }

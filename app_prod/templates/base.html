@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/perfil.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/carrito.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pedidos.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/producto_detalle.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/clientes_list.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/productosForm.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/infoVentas.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="container">
+        <nav>{% block menu %}{% endblock %}</nav>
+        <main>{% block content %}{% endblock %}</main>
+    </div>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>

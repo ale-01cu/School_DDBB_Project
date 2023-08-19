@@ -1,0 +1,11 @@
+{% extends 'NavMenuCliente.html' %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+    {{msg}}
+    {{error}}
+{% endblock %}

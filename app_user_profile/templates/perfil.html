@@ -1,0 +1,39 @@
+{% extends 'NavMenuCliente.html' %}
+
+{% block content %}
+    <h1>Perfil</h1>
+    
+    <div class="container-info">
+        <div class="item1">
+            <span>
+                Id del Perfil:
+                {{perfil.id_perfil}}
+            </span>
+        </div>
+        <div class="item2">
+            <span>
+                Nombre:
+                {{perfil.nombre}}
+            </span>
+        </div>
+        <div class="item3">
+            <span>
+                Email:
+                {{perfil.email}}
+            </span>
+        </div>
+        <div class="item4">
+            <span>
+                Fecha de Creacion del perfil:
+                {{perfil.fecha_creado}}
+            </span>
+        </div>
+        <div class="item5">
+            <span>
+                Carnet de Identidad:
+                {{perfil.ci}}
+            </span>
+        </div>
+    </div>
+
+{% endblock %}

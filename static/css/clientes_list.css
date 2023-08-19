@@ -1,0 +1,19 @@
+.container-clientes{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.container-clientes li{
+    display: flex;
+    flex-direction: column;
+    background-color: #eeeeee;
+    width: max-content;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn-eliminar-proveedor{
+    width: max-content;
+    align-self: flex-start;
+}

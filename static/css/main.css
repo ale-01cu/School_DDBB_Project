@@ -1,0 +1,77 @@
+main h1{
+    padding: 5px 20px;
+}
+
+.cards-container{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 20px;
+    gap: 15px;
+
+}
+
+.card{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.card:hover > a:first-child{
+    background-color: #eeeeee;
+    
+}
+
+
+.card a{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #666666;
+    background-color: #eeeeee;
+    padding: 5px;
+}
+
+.card a:hover{
+    background-color: #cccccc;
+}
+
+
+.card a:first-child{
+    padding: 5px;
+    transition: all 0.2s;
+    border-radius: 15px;
+    display: flex;
+    justify-content: start;
+}
+
+
+.card .btn-delete{
+    align-self: flex-end;
+    margin-top: 5px;
+    border-radius: 100%;
+}
+
+.card a:last-child:hover{
+    background-color: #eeeeee;
+}
+
+.paginacion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    padding-bottom: 20px;
+}
+
+.paginacion span{
+    margin: 0 10px;
+}
+
+.paginacion a{
+    text-decoration: none;
+    color: #447fff;
+    border: 1px solid #709dff;
+    padding: 5px;
+}

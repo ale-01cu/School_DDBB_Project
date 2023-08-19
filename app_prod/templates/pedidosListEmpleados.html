@@ -1,0 +1,37 @@
+{% extends 'NavMenuEmpleado.html' %}
+
+{% block content %}
+    <h1>Pedidos</h1>
+    <ul>
+        {% for pedido in pedidos %}
+            <li class="item-pedido">
+                <span>Cliente: {{ pedido.nombre }}</span>
+                <br>
+                <span>Producto: {{ pedido.nombre_producto }} </span>
+                <br>
+                <span>Fecha del pedido: {{ pedido.fecha_pedido }} </span>
+                <br>
+                <span>Cantidad pedida: {{ pedido.cantidad }}</span>
+                <br>
+                <span>
+                    Estado: 
+                    {% if pedido.estado == 'PENDIENTE'%}
+                        <span style="color: yellow;">{{ pedido.estado }}</span>
+                    {% else %}
+                        <span style="color: green;">{{ pedido.estado }}</span>
+                    {% endif %}
+                </span>
+                <br>
+                <span>Informacion de contacto: {{ prpedidooveedor.info_contacto }}</span>
+                <br>
+                <span>Direccion de envio: {{ pedido.dir_envio }}</span>
+                <br>
+    
+                {% if pedido.estado == 'PENDIENTE'%}
+                    <a href="/confirmacion/{{pedido.id_pedido}}" class="btn-confirmar">Confirmar</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    {{msg}}
+{% endblock %}

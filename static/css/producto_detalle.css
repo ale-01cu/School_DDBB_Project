@@ -1,0 +1,129 @@
+.container-detalle{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    list-style: none;
+}
+
+.container-detalle li{
+    background-color: #eeeeee;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.container-detalle li:nth-child(1){
+    grid-column: 1;
+    grid-row: 1;
+    
+}
+.container-detalle li:nth-child(2){
+    grid-column: 2;
+    grid-row: 1;
+}
+.container-detalle li:nth-child(3){
+    grid-column: 3;
+    grid-row: 1;
+}
+.container-detalle li:nth-child(4){
+    grid-column: 1;
+    grid-row: 2;
+}
+.container-detalle li:nth-child(5){
+    grid-column: 2;
+    grid-row:2;
+}
+
+.container-detalle h5{
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.container-detalle li:nth-child(6){
+    grid-column: 3;
+    grid-row: 2;
+}
+.container-detalle li:nth-child(7){
+    grid-column: 3;
+    grid-row: 3;
+}
+.container-detalle li:nth-child(8){
+    grid-column: 3;
+    grid-row: 4;
+}
+.container-detalle li:nth-child(9){
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.container-detalle .container-btns{
+    grid-column: 1;
+    grid-row: 4;   
+    display: flex;
+    justify-content: center; 
+}
+
+.btn-eliminar{
+    color: rgb(245, 110, 110);
+    border: 1px solid rgb(245, 110, 110);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.btn-eliminar:hover{
+    background-color: rgb(250, 219, 219);
+}
+
+.btn-actualizar{
+    color: rgb(65, 93, 250);
+    border: 1px solid rgb(65, 93, 250);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 20px;
+}
+
+.btn-actualizar:hover{
+    background-color: rgb(185, 195, 248);
+}
+
+.container-detalle .btn-pedir{
+    grid-column: 1;
+    grid-row: 4;
+    color: rgb(110, 245, 110);
+    border: 1px solid rgb(110, 245, 110);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 20px;
+}
+
+.container-detalle .btn-pedir:hover{
+    background-color: rgb(224, 253, 224);
+}
+
+.btn-carrito{
+    grid-column: 2;
+    grid-row: 4;
+    color: rgb(110, 245, 110);
+    border: 1px solid rgb(110, 245, 110);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 20px;
+}
+
+.container-detalle .btn-carrito:hover{
+    background-color: rgb(224, 253, 224);
+}

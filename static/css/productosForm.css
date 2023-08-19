@@ -1,0 +1,61 @@
+.form-productos{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    
+}
+
+.form-productos div{
+    padding: 10px;
+}
+
+.input-text{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.form-productos .submit{
+    width: 30%;
+    align-self: center;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.container-msgs{
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+}
+
+.container-msgs .msg{
+    border: 1px solid #9bf8a0;
+    color: #8afc90;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.container-msgs .error{
+    border: 1px solid #f89090;
+    color: #f89090;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.phone-proveedor{
+    display: flex;
+    flex-direction: column;
+}
+
+#btn-add-phone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.new-input{
+    width: 50%;
+    margin: 3px;
+}

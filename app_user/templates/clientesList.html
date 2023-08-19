@@ -1,0 +1,30 @@
+{% extends 'NavMenuEmpleado.html' %}
+
+{% block content %}
+    <h1>Clientes</h1>
+    <ul class="container-clientes">
+        {% for cliente in clientes %}
+            <li>
+                <span>Nombre: {{ cliente.nombre }}</span> 
+                <span>Email: {{ cliente.email }}</span> 
+                <span>Contraseña: {{ cliente.password }}</span> 
+                <span>Fecha de registro: {{ cliente.fecha_creado }}</span> 
+                <span>Activo: {{ cliente.estado }}</span> 
+            </li>
+        {% endfor %}
+    </ul>
+
+
+    <div class="paginacion">
+        {% if prev >= 0 %}
+          <a href="/clientes/?page={{ prev }}">Anterior</a>
+        {% endif %}
+        {% if page > 0 %}
+          <span>{{page}}</span>
+        {% endif %}
+        {% if sgte <= total %}
+          <a href="/clientes/?page={{ sgte }}">Siguiente</a>
+        {% endif %}
+        
+    </div>
+{% endblock %}

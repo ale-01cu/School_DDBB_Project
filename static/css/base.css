@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    height: 100vh;
+}
+
+nav{
+    grid-column: 1;
+}
+
+main{
+    grid-column: 2;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Asegura que el contenedor ocupa todo el alto de la pantalla */
+}

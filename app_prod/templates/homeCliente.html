@@ -1,0 +1,30 @@
+{% extends 'NavMenuCliente.html' %}
+
+{% block content %}
+  <h1>Home</h1>
+  <ul class="cards-container">
+    {% for producto in productos %}
+    <li class="card">
+      <a href="/obtener/{{ producto.id_producto }}/">
+        <span> Nombre: {{ producto.nombre }} </span>
+        <span>Cantidad: {{ producto.cant_stock }}</span>
+        <span>Precio: {{ producto.precio }}</span> 
+        <span> Categoria: {{ producto.categoria }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  <div class="paginacion">
+    {% if prev >= 0 %}
+      <a href="/home/?page={{ prev }}">Anterior</a>
+    {% endif %}
+    {% if page > 0 %}
+      <span>{{page}}</span>
+    {% endif %}
+    {% if sgte <= total %}
+      <a href="/home/?page={{ sgte }}">Siguiente</a>
+    {% endif %}
+    
+  </div>
+{% endblock %}
+

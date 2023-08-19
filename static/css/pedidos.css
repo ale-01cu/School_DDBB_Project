@@ -1,0 +1,19 @@
+.container-pedidos{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.item-pedido{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    max-width: max-content;
+    background-color: #eeeeee;
+    border-radius: 10px;
+}
+
+.item-pedido .btn-confirmar{
+    text-decoration: none;
+    color: blue;
+}

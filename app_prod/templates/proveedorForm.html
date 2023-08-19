@@ -1,0 +1,40 @@
+{% extends 'NavMenuEmpleado.html' %}
+
+{% block content %}
+    <h1>Adicionar Proveedor</h1>
+    <form action="/proveedores/crear/" method="post" class="form-productos">
+        {% csrf_token %}
+        <div>
+            {{ form.nombre.label_tag }}
+            {{ form.nombre }}
+        </div>
+        <div class="phone-proveedor">
+            <div style="display: flex; padding: 0;">
+                {{ form.telefono.label_tag }}
+                {{ form.telefono }}
+                <button type="button" id="btn-add-phone">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M417-177v-240H177v-126h240v-240h126v240h240v126H543v240H417Z"/></svg>
+                </button>
+            </div>
+
+        </div>
+
+        <input type="submit" value="Guardar" class="submit">
+    </form>
+    <div class="container-msgs">
+        {% if error %}
+            <span class="error">{{error}}</span>
+
+        {% else %}
+            <span class="msg">{{msg}}</span>
+
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+{% load static %}
+<script src="{% static 'js/addPhone.js' %}"></script>
+{% endblock %}
+

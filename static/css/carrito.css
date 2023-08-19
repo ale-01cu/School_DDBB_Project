@@ -1,0 +1,42 @@
+.container-carrito{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.container-carrito li{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 50%;
+}
+
+.container-carrito li div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-carrito li div a{
+    text-decoration: none;
+    color: rgb(96, 164, 241);
+}
+
+.container-carrito li div a:last-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card-carrito{
+    background-color: #eeeeee;
+    text-decoration: none;
+    color: #020202;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.card-carrito:hover{
+    background-color: #dddddd;
+}

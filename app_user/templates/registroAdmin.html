@@ -1,0 +1,46 @@
+{% extends 'NavMenuEmpleado.html' %}
+
+{% block content %}
+    <h1>Adicionar Empleado</h1>
+    <form method="post" class="form-productos">
+        {% csrf_token %}
+        <div>
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+        <div>
+            {{ form.password.label_tag }}
+            {{ form.password }}
+        </div>
+        <div>
+            {{ form.re_password.label_tag }}
+            {{ form.re_password }}
+        </div>
+        <div>
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+        <div>
+            {{ form.salario.label_tag }}
+            {{ form.salario }}
+        </div>
+        <div>
+            {{ form.experiencia.label_tag }}
+            {{ form.experiencia }}
+        </div>
+        <div>
+            {{ form.jefe.label_tag }}
+            {{ form.jefe }}
+        </div>
+        <input type="submit" value="Adicionar" class="submit">
+    </form>
+    <div class="container-msgs">
+        {% if error %}
+            <span class="error">{{error}}</span>
+
+        {% else %}
+            <span class="msg">{{msg}}</span>
+
+        {% endif %}
+    </div>
+{% endblock %}

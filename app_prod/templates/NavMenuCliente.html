@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block menu %}
+    {% load static %} 
+    <ul>
+        <li>
+            <img width="30px" height="30px" src="{% static 'Picture1.png' %}" alt="">
+            <h2>Menu</h2>
+
+        </li>
+        <li>
+            <img width="25px" height="25px" src="{% static 'home.png' %}" alt="">
+            <a href="/home/">Home</a>
+        </li>
+        <li>
+            <img width="25px" height="25px" src="{% static 'perfil.png' %}" alt="">
+            <a href="/perfil/">Mi Perfil</a>
+        </li>
+        <li>
+            <img width="20px" height="20px" src="{% static 'carrito.png' %}" alt="">
+            <a href="/carrito/">Carrito</a>
+        </li>
+        <li>
+            <img width="20px" height="20px" src="{% static 'pedidos.png' %}" alt="">
+            <a href="/pedidos/">Ver Pedidos</a>
+        </li>
+        <li>
+            <img width="20px" height="20px" src="{% static 'cerrar_sesion.png' %}" alt="">
+            <a href="/logout/">Cerrar Sesion</a>
+        </li>
+    </ul>
+
+
+{% endblock %}
+

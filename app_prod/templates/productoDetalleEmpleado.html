@@ -1,0 +1,32 @@
+{% extends 'NavMenuEmpleado.html' %}
+
+{% block content %}
+    <h1>Detalle Producto</h1>
+    <ul class="container-detalle">
+        <li>Nombre del Prodcuto: {{ productos.nombre }}</li>
+        <li>Descripcion: {{ productos.descripcion }}</li>
+        <li>Cantidad en Almacen: {{ productos.cant_stock }} </li>
+        <li>Precio: ${{ productos.precio }}</li>
+        <li>Categoria: {{ productos.categoria }}</li>
+        
+        {% if productos.tamanio_pantalla %}
+          <h5>Caracteristicas</h5>
+          <li>Tamaño de la Pantalla: {{productos.tamanio_pantalla}}</li>
+        {% endif %}
+        {% if productos.espacio %}
+          <li>Espacio: {{productos.espacio}}</li>
+        {% endif %}
+        {% if productos.memoria_ram %}
+          <li>Memoria Ram: {{productos.memoria_ram}}</li> 
+        {% endif %}
+        {% if productos.consumo %}
+          <li>Consumo de energia: {{productos.consumo}}</li>
+        {% endif %}
+        <li class="container-btns">
+          <a href="/eliminar/{{ productos.id_producto }}/" class="btn-eliminar">Elimnar Producto</a>
+          <a href="/actualizar/{{ productos.id_producto }}/" class="btn-actualizar">Actualizar Producto</a>
+        </li>
+        
+        {{errpr}}
+    </ul>
+{% endblock %}

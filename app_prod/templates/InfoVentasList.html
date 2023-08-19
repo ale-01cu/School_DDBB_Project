@@ -1,0 +1,26 @@
+{% extends 'NavMenuEmpleado.html' %}
+
+{% block content %}
+    <h1>Informes de Ventas</h1>
+    <ul class="container-ventas">
+        {% for venta in ventas %}
+            <li>
+                <span>id de la venta: {{venta.id_venta}}</span>
+                <span>id de la confirmacion: {{venta.id_confirmacion}}</span>
+                <span>id del pedido: {{venta.id_pedido}}</span>
+                <span>Nombre del cliente: {{venta.nombre_cliente}}</span>
+                <span>Fecha del pedido: {{venta.fecha_pedido}}</span>
+                <span>Cantidad de productos: {{venta.cantidad}}</span>
+                <span>Informacion de contacto: {{venta.info_contacto}}</span>
+                <span>Direccion de Envio: {{venta.dir_envio}}</span>
+                <span>Producto: {{venta.nombre_producto}}</span>
+                <span>Empleado que confirmo: {{venta.nombre_empleado}}</span>
+                <span>Fecha de la venta: {{venta.fecha_creado}}</span>
+                <span>Salario: {{venta.salario}}</span>
+                <span>Años de Experiencia: {{venta.años_experiencia}}</span>
+                <span>Ganancia Total: ${{venta.ganancia_total}}</span>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
