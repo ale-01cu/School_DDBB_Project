@@ -201,3 +201,8 @@ $$
 	END;														
 $$ 
 LANGUAGE plpgsql
+
+
+GRANT SELECT, UPDATE, DELETE, CREATE ON producto TO emiliano;																																													
+GRANT SELECT, UPDATE, DELETE, CREATE ON proveedor TO frank;																													
+GRANT SELECT ON info_ventas TO anita;
