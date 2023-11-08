@@ -2,8 +2,143 @@ from collections import namedtuple
 from django.shortcuts import render, redirect
 from django.db import connection
 from app_prod.forms.ProductosForms import ProductosForms
-from django.http import JsonResponse
 from app_prod.permissions import is_admin
+
+
+def get_productos_vacios(request):
+  if is_admin(request.user.id):
+    with connection.cursor() as cursor:
+      cursor.execute('SELECT * FROM productos_vacios')
+      productos = [namedtuple('Producto', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]
+    return render(request, 'productosVacios.html', {'productos': productos})
+  return render(request, 'forbidden.html')
+
+
+def filter_products(request):
+  productos = []
+  page = int(request.GET.get('page', 0))
+  categoria = request.GET.get('c', '')
+  cant_elementos_x_pagina = 50
+  if page < 0: page = 0
+
+  try:
+    with connection.cursor() as cursor:
+      cursor.execute(f"SELECT * FROM filtrar_productos_por_categoria('{categoria}') LIMIT {cant_elementos_x_pagina} OFFSET {page*cant_elementos_x_pagina}")
+      productos = [namedtuple('Producto', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]
+
+      cursor.execute('SELECT * FROM productos_mas_vendidos() AS t (id_producto INT, nombre VARCHAR(50), cantidad bigint, rank bigint)')
+      mas_vendidos = [namedtuple('Producto_mas_vendido', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]
+
+      cursor.execute('SELECT * FROM productos_x_categorias() AS t (categoria varchar(100), cantidad bigint) ')
+      productos_x_categorias = [namedtuple('Producto_x_categorias', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]
+      
+  except Exception as e:
+    print(e)
+    return render(
+      request, 
+      'error_page_cliente.html', 
+      {'error': 'Error al conectar con la base de datos'}
+    )
+
+  with connection.cursor() as cursor:
+    cursor.execute('SELECT * FROM total_productos')
+    total = cursor.fetchall()[0][0]
+
+  if is_admin(request.user.id):
+    return render(
+      request, 
+      'homeEmpleado.html', 
+      {
+        'productos': productos, 
+        'mas_vendidos': mas_vendidos,
+        'productos_x_categorias': productos_x_categorias,
+        'categoria': categoria,
+        'sgte': page+1, 
+        'prev': page-1, 
+        'total': total, 
+        'page': page
+      }
+    )
+  
+  else:
+    return render(
+      request, 
+      'homeCliente.html', 
+      {
+        'productos': productos, 
+        'mas_vendidos': mas_vendidos,
+        'productos_x_categorias': productos_x_categorias,
+        'categoria': categoria,
+        'sgte': page+1, 
+        'prev': page-1, 
+        'total': total, 
+        'page': page
+      }
+    )
+
+
+def search_products(request):
+    productos = []
+    page = int(request.GET.get('page', 0))
+    query = request.GET.get('q', '')
+    cant_elementos_x_pagina = 50
+    if page < 0: page = 0
+
+    try:
+      with connection.cursor() as cursor:
+        cursor.execute(f"SELECT * FROM buscar_producto('{query}') LIMIT {cant_elementos_x_pagina} OFFSET {page*cant_elementos_x_pagina}")
+        productos = [namedtuple('Producto', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]
+
+        cursor.execute('SELECT * FROM productos_mas_vendidos() AS t (id_producto INT, nombre VARCHAR(50), cantidad bigint, rank bigint)')
+        mas_vendidos = [namedtuple('Producto_mas_vendido', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]
+
+        cursor.execute('SELECT * FROM productos_x_categorias() AS t (categoria varchar(100), cantidad bigint) ')
+        productos_x_categorias = [namedtuple('Producto_x_categorias', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]
+        
+    except Exception as e:
+      print(e)
+      return render(
+        request, 
+        'error_page_cliente.html', 
+        {'error': 'Error al conectar con la base de datos'}
+      )
+
+    with connection.cursor() as cursor:
+      cursor.execute('SELECT * FROM total_productos')
+      total = cursor.fetchall()[0][0]
+
+    if is_admin(request.user.id):
+      return render(
+        request, 
+        'homeEmpleado.html', 
+        {
+          'productos': productos, 
+          'mas_vendidos': mas_vendidos,
+          'productos_x_categorias': productos_x_categorias,
+          'query': query,
+          'sgte': page+1, 
+          'prev': page-1, 
+          'total': total, 
+          'page': page
+        }
+      )
+    
+    else:
+      return render(
+        request, 
+        'homeCliente.html', 
+        {
+          'productos': productos, 
+          'mas_vendidos': mas_vendidos,
+          'productos_x_categorias': productos_x_categorias,
+          'query': query,
+          'sgte': page+1, 
+          'prev': page-1, 
+          'total': total, 
+          'page': page
+        }
+      )
+
 
 # Create your views here.
 def getProductos(request):
@@ -17,20 +152,55 @@ def getProductos(request):
     with connection.cursor() as cursor:
       cursor.execute(f"SELECT * FROM listar_productos LIMIT {cant_elementos_x_pagina} OFFSET {page*cant_elementos_x_pagina}")
       productos = [namedtuple('Producto', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]
-  
+
+      cursor.execute('SELECT * FROM productos_mas_vendidos() AS t (id_producto INT, nombre VARCHAR(50), cantidad bigint, rank bigint)')
+      mas_vendidos = [namedtuple('Producto_mas_vendido', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]
+
+      cursor.execute('SELECT * FROM productos_x_categorias() AS t (categoria varchar(100), cantidad bigint) ')
+      productos_x_categorias = [namedtuple('Producto_x_categorias', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]
+      
   except Exception as e:
     print(e)
-    return render(request, 'error_page_cliente.html', {'error': 'Error al conectar con la base de datos'})
+    return render(
+      request, 
+      'error_page_cliente.html', 
+      {'error': 'Error al conectar con la base de datos'}
+    )
 
 
   with connection.cursor() as cursor:
     cursor.execute('SELECT * FROM total_productos')
     total = cursor.fetchall()[0][0]
-  
+
   if is_admin(request.user.id):
-    return render(request, 'homeEmpleado.html', {'productos': productos, 'sgte': page+1, 'prev': page-1, 'total': total, 'page': page})
+    return render(
+      request, 
+      'homeEmpleado.html', 
+      {
+        'productos': productos, 
+        'mas_vendidos': mas_vendidos,
+        'productos_x_categorias': productos_x_categorias,
+        'sgte': page+1, 
+        'prev': page-1, 
+        'total': total, 
+        'page': page
+      }
+    )
+  
   else:
-    return render(request, 'homeCliente.html', {'productos': productos, 'sgte': page+1, 'prev': page-1, 'total': total, 'page': page})
+    return render(
+      request, 
+      'homeCliente.html', 
+      {
+        'productos': productos, 
+        'mas_vendidos': mas_vendidos,
+        'productos_x_categorias': productos_x_categorias,
+        'sgte': page+1, 
+        'prev': page-1, 
+        'total': total, 
+        'page': page
+      }
+    )
   
 
 

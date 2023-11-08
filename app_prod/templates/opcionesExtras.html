@@ -3,11 +3,25 @@
 {% block content %}
     <h1>Opciones Extras</h1>
 
-    <div style="padding: 20px; display:flex; flex-direction: column;">
+    <div style="padding: 20px; display:flex; flex-direction: column;" class="container-options">
         <a href="/poblar-proveedores/" style="margin-bottom: 5px;">Poblar Proveedores</a>
         <a href="/poblar-productos/" style="margin-bottom: 5px;">Poblar Productos</a>
         <a href="/poblar-clientes/" style="margin-bottom: 5px;">Poblar Clientes</a>
         <a href="/poblar-empleados/">Poblar Empleados</a>
         <a href="/poblar-pedidos/">Generar Pedidos</a>
+    </div>
+    <div class="container-forms-cursor">
+        <form action="aumentar-precio/" method="POST" class="form-aumentar">
+            <h3>Aumentar Precios</h3>
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" name="" id="">
+        </form>
+        <form action="disminuir-precio/" method="POST" class="form.disminuir">
+            <h3>Disminuir Precios</h3>
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" name="" id="">
+        </form>
     </div>
 {% endblock %}

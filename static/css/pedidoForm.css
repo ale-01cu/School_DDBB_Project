@@ -1,0 +1,22 @@
+.pedido-form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    align-self: center;
+    padding: 20px;
+}
+
+.pedido-form label{
+    font-size: large;
+}
+
+.pedido-form input{
+    margin-bottom: 20px;
+    padding: 3px;
+}
+
+.pedido-form input:last-child{
+    padding: 10px;
+    width: 50%;
+    align-self: center;
+}

@@ -1,7 +1,10 @@
 {% extends 'NavMenuEmpleado.html' %}
 
 {% block content %}
-    <h1>Informes de Ventas</h1>
+    <div class="header-info-ventas">
+        <h1>Informes de Ventas</h1>
+        <h2>Ganancia Promedio: ${{ganancia_promedio}}</h2>
+    </div>
     <ul class="container-ventas">
         {% for venta in ventas %}
             <li>
@@ -16,7 +19,6 @@
                 <span>Producto: {{venta.nombre_producto}}</span>
                 <span>Empleado que confirmo: {{venta.nombre_empleado}}</span>
                 <span>Fecha de la venta: {{venta.fecha_creado}}</span>
-                <span>Salario: {{venta.salario}}</span>
                 <span>Años de Experiencia: {{venta.años_experiencia}}</span>
                 <span>Ganancia Total: ${{venta.ganancia_total}}</span>
             </li>

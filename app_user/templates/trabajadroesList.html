@@ -5,13 +5,14 @@
     <ul class="container-clientes">
         {% for empleado in Empleados %}
             <li>
-                <span>Nombre: {{ empleado.nombre }}</span> 
-                <span>Email: {{ empleado.email }}</span> 
-                <span>Contraseña: {{ empleado.password }}</span> 
-                <span>Fecha de registro: {{ empleado.fecha_creado }}</span> 
-                <span>Activo: {{ empleado.estado }}</span> 
-                <span>Salario: {{ empleado.salario }}</span> 
-                <span>Años de Experiencia: {{ empleado.años_experiencia }}</span> 
+                <div>
+                    <span>Nombre: {{ empleado.nombre }}</span> 
+                    <span>Email: {{ empleado.email }}</span> 
+                    <span>Fecha de registro: {{ empleado.fecha_creado }}</span> 
+                    <span>Activo: {{ empleado.estado }}</span> 
+                    <span>Salario: {{ empleado.salario }}</span> 
+                    <span>Años de Experiencia: {{ empleado.años_experiencia }}</span> 
+                </div>
             </li>
         {% endfor %}
     </ul>

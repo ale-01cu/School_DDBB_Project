@@ -1,0 +1,19 @@
+{% extends 'NavMenuEmpleado.html' %}
+
+{% block content %}
+
+    <div class="header-main">
+        <h1>Historial</h1>
+    </div>
+
+    <div>
+        <ul class="cards-container">
+            {% for item in items %}
+                <li class="card">
+                    {{item}}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

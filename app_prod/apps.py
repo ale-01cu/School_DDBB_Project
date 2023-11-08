@@ -3,6 +3,9 @@ import os
 from app_prod.db.views import execute_views
 from app_prod.db.functions import execute_functions
 from app_prod.db.function_ganancia import ganancia
+from app_prod.db.indexes import execute_indexes
+from app_prod.db.triggers import execute_triggers
+from app_prod.db.cursors import execute_cursors
 
 class AppProdConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
@@ -15,3 +18,6 @@ class AppProdConfig(AppConfig):
             ganancia()
             execute_views()
             execute_functions()
+            # execute_indexes()
+            # execute_triggers()
+            execute_cursors()

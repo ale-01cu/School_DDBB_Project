@@ -1,5 +1,25 @@
 main h1{
     padding: 5px 20px;
+    width: 30%;
+}
+
+.header-main{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.header-main a{
+    color: rgb(204, 132, 245);
+    text-decoration: none;
+}
+
+.header-main div{
+    padding: 5px 20px;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+
 }
 
 .cards-container{
@@ -8,8 +28,23 @@ main h1{
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     padding: 20px;
     gap: 15px;
+    width: 80%;
 
 }
+
+.container-cards-container{
+    display: flex;
+}
+
+.container-cards-container .container-mas-vendidos{
+    padding: 20px 20px 0 0;
+    width: 20%;
+}
+
+.container-cards-container .container-mas-vendidos h2 {
+    padding: 10px;
+}
+
 
 .card{
     padding: 10px;
@@ -17,12 +52,6 @@ main h1{
     flex-direction: column;
 
 }
-
-.card:hover > a:first-child{
-    background-color: #eeeeee;
-    
-}
-
 
 .card a{
     display: flex;
@@ -33,17 +62,20 @@ main h1{
     padding: 5px;
 }
 
-.card a:hover{
-    background-color: #cccccc;
-}
-
-
 .card a:first-child{
-    padding: 5px;
+    padding: 10px;
     transition: all 0.2s;
     border-radius: 15px;
     display: flex;
     justify-content: start;
+}
+
+.card a:last-child{
+    transition: all 0.2s;
+}
+
+.card a:first-child:hover{
+    background-color: #bbbbbb;
 }
 
 
@@ -54,7 +86,7 @@ main h1{
 }
 
 .card a:last-child:hover{
-    background-color: #eeeeee;
+    background-color: #bbbbbb;
 }
 
 .paginacion{

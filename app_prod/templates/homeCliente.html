@@ -1,19 +1,53 @@
 {% extends 'NavMenuCliente.html' %}
 
 {% block content %}
-  <h1>Home</h1>
-  <ul class="cards-container">
-    {% for producto in productos %}
-    <li class="card">
-      <a href="/obtener/{{ producto.id_producto }}/">
-        <span> Nombre: {{ producto.nombre }} </span>
-        <span>Cantidad: {{ producto.cant_stock }}</span>
-        <span>Precio: {{ producto.precio }}</span> 
-        <span> Categoria: {{ producto.categoria }}</span>
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
+
+  <div class="header-main">
+    <h1>Home</h1>
+    <div>
+      {% for categoria in productos_x_categorias %}
+        <a href="/home/filter?c={{categoria.categoria}}">{{categoria.categoria}} ({{categoria.cantidad}})</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="buscador">
+    <form action="/home/search/" method="GET">
+      <input type="text" name="q" id="" placeholder="Buscar Productos..." value={{query}}>
+      <input type="button" value="Buscar">
+    </form>
+  </div>
+
+  <div class="container-cards-container">
+
+    <ul class="cards-container">
+      {% for producto in productos %}
+      <li class="card">
+        <a href="/obtener/{{ producto.id_producto }}/">
+          <span> Nombre: {{ producto.nombre }} </span>
+          <span>Cantidad: {{ producto.cant_stock }}</span>
+          <span>Precio: {{ producto.precio }}</span> 
+          <span> Categoria: {{ producto.categoria }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <ul class="container-mas-vendidos">
+      <h2>Mas Vendidos</h2>
+      {% for producto in mas_vendidos %}
+        <li class="card">
+          <a href="/obtener/{{ producto.id_producto }}/">
+            <span> Nombre: {{ producto.nombre }} </span>
+            <span>Cantidad: {{ producto.cant_stock }}</span>
+            <span>Precio: ${{ producto.precio }}</span> 
+            <span> Categoria: {{ producto.categoria }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+
+  </div>
   <div class="paginacion">
     {% if prev >= 0 %}
       <a href="/home/?page={{ prev }}">Anterior</a>

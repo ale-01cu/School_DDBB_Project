@@ -15,7 +15,11 @@ def addCarrito(request, id_prod=None):
             
         except Exception as e:
             print(e)
-            return render(request, 'error_page_cliente.html', {'error': 'Ha ocurrido un error al conectar con la base de datos'})
+            return render(
+                request, 
+                'error_page_cliente.html', 
+                {'error': 'Ha ocurrido un error al conectar con la base de datos'}
+            )
                     
     else:
         return JsonResponse({'error': 'Logeese por favor'})
@@ -30,11 +34,26 @@ def getCarrito(request):
             with connection.cursor() as cursor:
                 cursor.execute(f'SELECT * FROM obtener_carrito({user_id}) AS listar_productos')
                 productos = [namedtuple('Producto', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]  
-                return render(request, 'carritoListProductos.html', {'productos': productos})
+
+                cursor.execute(f'SELECT * FROM suma_acumulativa_carrito({user_id})')
+                suma = [namedtuple('suma_acumulada', [col[0] for col in cursor.description])(*row) for row in cursor.fetchall()]  
+                print(suma)
+                return render(
+                    request, 
+                    'carritoListProductos.html', 
+                    {
+                        'productos': productos,
+                        'suma_acumulativa': suma
+                    }
+                )
             
         except Exception as e:
             print(e)
-            return render(request, 'error_page_cliente.html', {'error': 'Ha ocurrido un error al conectar con la base de datos'})
+            return render(
+                request, 
+                'error_page_cliente.html', 
+                {'error': 'Ha ocurrido un error al conectar con la base de datos'}
+            )
         
     else:
         return JsonResponse({'error': 'Logeese por favor'})
@@ -55,7 +74,11 @@ def eliminarDelCarrito(request, id_prod=None):
             
         except Exception as e:
             print(e)
-            return render(request, 'error_page_cliente.html', {'error': 'Ha ocurrido un error al conectar con la base de datos'})
+            return render(
+                request, 
+                'error_page_cliente.html', 
+                {'error': 'Ha ocurrido un error al conectar con la base de datos'}
+            )
 
     else:
         return JsonResponse({'error': 'Logeese por favor'})

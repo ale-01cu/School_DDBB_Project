@@ -9,6 +9,7 @@
     flex-direction: column;
     padding: 5px;
     width: 50%;
+    margin: 10px 0;
 }
 
 .container-carrito li div{
@@ -18,6 +19,10 @@
 
 .container-carrito li div a{
     text-decoration: none;
+
+}
+
+.container-carrito li div a:hover{
     color: rgb(96, 164, 241);
 }
 

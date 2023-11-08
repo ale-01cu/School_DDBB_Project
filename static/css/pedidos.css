@@ -11,6 +11,7 @@
     max-width: max-content;
     background-color: #eeeeee;
     border-radius: 10px;
+    margin: 15px 0;
 }
 
 .item-pedido .btn-confirmar{

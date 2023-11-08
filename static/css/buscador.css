@@ -1,0 +1,31 @@
+.buscador{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:  15px 10px;
+}
+
+.buscador form{
+    border: 1px solid #999;
+    border-radius: 10px;
+}
+
+.buscador form input:first-child{
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.buscador form input:last-child{
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    background-color: rgb(250, 202, 153);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.buscador form input:last-child:hover{
+    background-color: rgb(247, 186, 125);
+}

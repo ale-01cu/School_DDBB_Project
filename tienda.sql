@@ -121,6 +121,19 @@ CREATE TABLE perfil_usuario(
 	--FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
 
+
+CREATE TABLE productos_vacios(
+	id_producto INT,
+	FOREIGN KEY(id_producto) REFERENCES producto(id_producto) ON DELETE SET NULL
+
+)
+
+CREATE TABLE historial_usuario(
+	id_usuario INT,
+	accion CHAR(255),
+	fecha DATE DEFAULT CURRENT_DATE,
+	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario) ON DELETE SET NULL
+)
                        
 
 	

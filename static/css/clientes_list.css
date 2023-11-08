@@ -6,14 +6,27 @@
 
 .container-clientes li{
     display: flex;
-    flex-direction: column;
-    background-color: #eeeeee;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
     width: max-content;
-    padding: 10px;
     border-radius: 10px;
+    margin: 20px 0;
+}
+
+.container-clientes li div{
+    display: flex;
+    flex-direction: column;
 }
 
 .btn-eliminar-proveedor{
     width: max-content;
     align-self: flex-start;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 100%;
+}
+
+.btn-eliminar-proveedor:hover{
+    background-color: #eeeeee;
 }
