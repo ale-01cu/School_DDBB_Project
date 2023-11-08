@@ -12,6 +12,7 @@ main h1{
 .header-main a{
     color: rgb(204, 132, 245);
     text-decoration: none;
+    margin-right: 10px;
 }
 
 .header-main div{
