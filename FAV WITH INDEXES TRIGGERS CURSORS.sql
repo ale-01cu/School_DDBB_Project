@@ -114,34 +114,32 @@ LANGUAGE plpgsql;
 				
 
 # Triggers
-
-CREATE OR REPLACE FUNCTION verificar_stock_vacio() RETURNS TRIGGER AS 
-$$
-	DECLARE 
-		id INTEGER;
-		
-	BEGIN
-		RAISE NOTICE 'Hola, mundo!';
-		IF (OLD.cant_stock <> 0 AND NEW.cant_stock = 0) THEN
-			SELECT * INTO id FROM productos_vacios;
-			IF FOUND THEN
-				INSERT INTO productos_vacios(id_producto) VALUES (OLD.id);
-			END IF;
-		END IF;
-		RETURN NEW;
-	END;
+CREATE OR REPLACE FUNCTION verificar_stock_vacio() RETURNS TRIGGER AS  
+$$ 
+	DECLARE  
+		prod RECORD; 
+	BEGIN 
+		RAISE NOTICE 'Hola, mundo!'; 
+		IF (OLD.cant_stock <> 0 AND NEW.cant_stock = 0) THEN 
+			SELECT * INTO prod FROM productos_vacios WHERE id_producto = OLD.id_producto; 
+			IF NOT FOUND THEN 
+				INSERT INTO productos_vacios(id_producto) VALUES (OLD.id_producto);
+			END IF; 
+		END IF; 
+		RETURN NEW; 
+	END; 
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER stock_vacio
-AFTER UPDATE ON producto
-FOR EACH ROW
+CREATE OR REPLACE TRIGGER stock_vacio 
+AFTER UPDATE ON producto 
+FOR EACH ROW 
 EXECUTE PROCEDURE verificar_stock_vacio();
 
 
 
 CREATE OR REPLACE FUNCTION registrar_pedido() RETURNS TRIGGER AS $$
 	BEGIN
-		INSERT INTO historial_usuario(id_usuario, accion) VALUES (NEW.id_cliente, 'Pedido realizado');
+		INSERT INTO historial_usuario(id_cliente, accion) VALUES (NEW.id_cliente, 'Pedido realizado');
 		RETURN NEW;
 	END;
 $$ LANGUAGE plpgsql;
@@ -201,6 +199,12 @@ $$
 	END;														
 $$ 
 LANGUAGE plpgsql
+
+
+
+CREATE USER emiliano WITH ENCRYPTED PASSWORD '12345678';
+CREATE USER anita WITH ENCRYPTED PASSWORD '12345678';
+CREATE USER frank WITH ENCRYPTED PASSWORD '12345678';
 
 
 GRANT SELECT, UPDATE, DELETE, CREATE ON producto TO emiliano;																																													

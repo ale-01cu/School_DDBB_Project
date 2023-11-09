@@ -129,10 +129,10 @@ CREATE TABLE productos_vacios(
 )
 
 CREATE TABLE historial_usuario(
-	id_usuario INT,
+	id_cliente INT,
 	accion CHAR(255),
 	fecha DATE DEFAULT CURRENT_DATE,
-	FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario) ON DELETE SET NULL
+	FOREIGN KEY(id_cliente) REFERENCES cliente(id_cliente) ON DELETE SET NULL
 )
                        
 
