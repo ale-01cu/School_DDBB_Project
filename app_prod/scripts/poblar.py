@@ -6,7 +6,7 @@ def llenar_productos():
     categorias = ['componente_pc', 'movil', 'equipo_hogar']
     cont = 0
 
-    for i in range(15000):
+    for i in range(5000):
         nombre = fake.word()
         descripcion = fake.text()
         cant_stock = fake.random_int(min=1, max=100)
@@ -14,11 +14,11 @@ def llenar_productos():
         imagen = fake.image_url()
         id_proveedor = fake.random_int(min=1, max=50)
         #id_proveedor = fake.random_int(min=1, max=10)
-        tipo = categorias[cont]
+        tipo = categorias[2]
         
-        if i+1 % 5000 == 0:
-            if cont < 2: cont += 1
-            tipo = categorias[cont]
+        # if i+1 % 5000 == 0:
+        #     if cont < 2: cont += 1
+        #     tipo = categorias[cont]
         
         tamanio_pantalla = str(fake.random_int(min=4, max=10))
         espacio = str(fake.random_int(min=16, max=256))
