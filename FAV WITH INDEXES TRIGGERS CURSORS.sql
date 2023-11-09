@@ -55,13 +55,13 @@ $$
 		ORDER BY categoria;
 		*/
 
-		WITH nombre_temporal AS (
+		WITH productos_categorias AS (
 			SELECT categoria, COUNT(*) AS total
 			FROM producto
 			GROUP BY categoria
 		)
 		SELECT categoria, total
-		FROM nombre_temporal;
+		FROM productos_categorias;
 	END; 
 
 $$
